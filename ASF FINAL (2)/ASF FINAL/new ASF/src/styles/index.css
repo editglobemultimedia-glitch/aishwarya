@@ -1,0 +1,395 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --cream-50: #FFFDF8;
+    --cream-100: #FAF7F0;
+    --maroon: #7C1724;
+    --maroon-dark: #5E101B;
+    --gold-antique: #C68A28;
+    --gold-champagne: #E5B85C;
+    --navy: #082C4D;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream-100 text-gray-800 font-sans antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+
+  ::selection {
+    background-color: #E5B85C40;
+    color: #5E101B;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #FAF7F0;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #C68A28;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  /* Gold divider ornament */
+  .gold-divider {
+    @apply flex items-center gap-3 justify-center my-4;
+  }
+
+  .gold-divider::before,
+  .gold-divider::after {
+    content: '';
+    @apply flex-1 h-px bg-gradient-to-r from-transparent to-gold-antique;
+  }
+
+  .gold-divider::after {
+    @apply bg-gradient-to-l from-transparent to-gold-antique;
+  }
+
+  /* Premium card */
+  .card-premium {
+    @apply bg-cream-50 border border-cream-300 rounded-lg shadow-sm hover:shadow-md transition-all duration-300;
+  }
+
+  /* Eyebrow label */
+  .eyebrow {
+    @apply text-gold-antique tracking-[0.2em] uppercase text-xs font-sans font-medium;
+  }
+
+  /* Section heading */
+  .section-heading {
+    @apply text-3xl md:text-4xl lg:text-5xl font-serif font-semibold text-maroon leading-tight;
+  }
+
+  /* Maroon button */
+  .btn-primary {
+    @apply bg-maroon hover:bg-maroon-dark text-cream-50 font-sans text-sm font-medium px-6 py-3 rounded transition-all duration-200 inline-flex items-center gap-2;
+  }
+
+  /* Gold outlined button */
+  .btn-outline {
+    @apply border border-gold-antique text-maroon hover:bg-gold-antique hover:text-white font-sans text-sm font-medium px-6 py-3 rounded transition-all duration-200 inline-flex items-center gap-2;
+  }
+
+  /* Cream outlined button */
+  .btn-ghost {
+    @apply border border-maroon text-maroon hover:bg-maroon hover:text-cream-50 font-sans text-sm font-medium px-6 py-3 rounded transition-all duration-200 inline-flex items-center gap-2;
+  }
+
+  /* Mandala background overlay */
+  .mandala-bg {
+    background-image:
+      radial-gradient(circle at 80% 50%, rgba(198,138,40,0.06) 0%, transparent 60%),
+      radial-gradient(circle at 20% 80%, rgba(198,138,40,0.04) 0%, transparent 50%);
+  }
+
+  /* Existing page banner */
+  .page-banner {
+    @apply relative bg-gradient-to-br from-navy to-navy-dark text-cream-50 py-20 md:py-28 overflow-hidden;
+  }
+
+  /* Gold border accent */
+  .gold-border-left {
+    @apply border-l-4 border-gold-antique pl-4;
+  }
+
+  /* Active nav link */
+  .nav-active {
+    @apply text-maroon font-medium;
+  }
+
+  /* Form input */
+  .form-input {
+    @apply w-full border border-cream-300 bg-cream-50 rounded px-4 py-3 text-gray-800 font-sans text-sm focus:outline-none focus:border-gold-antique focus:ring-2 focus:ring-gold-antique/20 transition-all duration-200;
+  }
+
+  /* Quote block */
+  .quote-block {
+    @apply relative text-xl md:text-2xl font-serif italic text-maroon-dark leading-relaxed;
+  }
+
+  /* Element card */
+  .element-card {
+    @apply relative overflow-hidden rounded-xl p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Decorative mandala SVG in existing page banners */
+.page-banner::after {
+  content: '';
+  position: absolute;
+  right: -80px;
+  top: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(198,138,40,0.15) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Navigation underline hover effect */
+.nav-link-hover {
+  position: relative;
+}
+
+.nav-link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #C68A28;
+  transition: width 0.2s ease;
+}
+
+.nav-link-hover:hover::after {
+  width: 100%;
+}
+
+/* Prose content styling */
+.prose-asf p {
+  @apply text-gray-700 leading-relaxed mb-4 font-sans;
+}
+
+.prose-asf h3 {
+  @apply text-xl font-serif text-maroon font-semibold mt-6 mb-2;
+}
+
+.prose-asf ul {
+  @apply list-none space-y-2 my-4;
+}
+
+.prose-asf ul li {
+  @apply flex items-start gap-2 text-gray-700 font-sans text-sm;
+}
+
+.prose-asf ul li::before {
+  content: '◆';
+  @apply text-gold-antique text-xs mt-1 flex-shrink-0;
+}
+
+/* =========================================
+   ABOUT US HERO
+   Two-column layout matching reference image
+   ========================================= */
+
+.about-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 650px;
+  overflow: hidden;
+  background-color: #082C4D;
+}
+
+.about-hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: 60px clamp(24px, 5vw, 90px);
+  position: relative;
+  z-index: 1;
+}
+
+/* Breadcrumb */
+.about-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #E5B85C;
+}
+
+.about-breadcrumb a {
+  color: #FFFDF8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.about-breadcrumb a:hover {
+  color: #E5B85C;
+}
+
+.about-breadcrumb-separator {
+  color: #E5B85C;
+}
+
+/* Hero heading retains the existing cream colour */
+.about-hero-content h1 {
+  color: #FFFDF8;
+  margin: 0;
+}
+
+/* Hero description */
+.about-hero-subtitle {
+  max-width: 620px;
+  margin-top: 20px;
+  color: #E5B85C;
+  font-family: inherit;
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+/* Gold divider below description */
+.about-hero-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.about-hero-divider span:first-child {
+  width: 58px;
+  height: 2px;
+  background-color: #C68A28;
+}
+
+.about-hero-divider span:last-child {
+  width: 28px;
+  height: 2px;
+  background-color: #C68A28;
+  opacity: 0.65;
+}
+
+.about-hero-diamond {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  border: 1px solid #C68A28;
+  transform: rotate(45deg);
+}
+
+/* Right-side philosophy artwork */
+.about-hero-art {
+  position: relative;
+  min-width: 0;
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #ffffff;
+  border-top-left-radius: 48% 50%;
+  border-bottom-left-radius: 48% 50%;
+  border: 4px solid #1E6BB8;
+}
+
+.about-hero-art img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 650px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.about-hero-art img[src$=".jpg"],
+.about-hero-art img[src$=".jpeg"] {
+  object-fit: cover;
+}
+
+.about-hero-art img[src*="asf-main-banner"] {
+  object-fit: contain;
+  background-color: #ffffff;
+}
+
+/* Tablet and mobile responsiveness */
+@media (max-width: 768px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .about-hero-content {
+    padding: 48px 24px;
+  }
+
+  .about-hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .about-hero-subtitle {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .about-hero-art {
+    min-height: 350px;
+    border-radius: 0;
+  }
+
+  .about-hero-art img {
+    min-height: 350px;
+    max-height: 480px;
+  }
+}
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+  .about-hero-content {
+    padding: 40px 20px;
+  }
+
+  .about-hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .about-hero-art {
+    min-height: 280px;
+  }
+
+  .about-hero-art img {
+    min-height: 280px;
+  }
+}
